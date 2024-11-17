@@ -5,12 +5,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { navItems } from "./nav-items";
 
 const queryClient = new QueryClient();
+const basename = `/${import.meta.env.VITE_PORT}`;
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <Routes>
           {navItems.map(({ to, page }) => (
             <Route key={to} path={to} element={page} />
